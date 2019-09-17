@@ -1,0 +1,12 @@
+* {
+    margin:0;
+    padding:0;}
+/* CSS Reset */
+
+.container {
+    background-color: navy;
+}
+h1{
+    color: white;
+    
+}

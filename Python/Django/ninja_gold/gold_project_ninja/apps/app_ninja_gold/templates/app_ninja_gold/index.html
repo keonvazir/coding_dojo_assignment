@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'app_ninja_gold/css/style.css' %}">
+</head>
+<body>
+
+<div class="jumbotron" style="text-align: center">
+    <h1 class="display-4">Your gold = {{ request.session.gold}}</h1>
+    <p class="lead">Visit locations to gather gold</p>
+    <form action="/clear" style="text-align: center">
+        {% csrf_token %}
+        <div method="post">  <!--QUESTION: why does it break when I put the method="post" in the form's opening div?-->
+            <input type="hidden" name="clear" value="clear">
+            <button type="submit" class="btn btn-primary btn-lg" value="clear">Clear Score</button>
+        </div>
+    </form>
+</div>   
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <form class="card" action="/process_money" method="post">
+            {% csrf_token %}
+            <div class="card-body form-group">
+                <h5 class="card-title">Farm</h5>
+                <label class="card-text">Earn 10 - 20 golds {{ session.gold}}</label>
+                <input type="hidden" name="location" value="farm">
+                <button type="submit" class="btn btn-primary" value="farm">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <form class="card" action="/process_money" method="post">
+            {% csrf_token %}
+            <div class="card-body form-group">
+                <h5 class="card-title">Cave</h5>
+                <label class="card-text">Earn 5 - 10 golds</label>
+                <input type="hidden" name="location" value="cave">
+                <button type="submit" class="btn btn-primary" value="cave">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <form class="card" action="/process_money" method="post">
+            {% csrf_token %}
+            <div class="card-body form-group">
+                <h5 class="card-title">House</h5>
+                <label class="card-text">Earn 2 - 5 golds</label>
+                <input type="hidden" name="location" value="house">
+                <button type="submit" class="btn btn-primary" value="house">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <form class="card" action="/process_money" method="post">
+            {% csrf_token %}
+            <div class="card-body form-group">
+                <h5 class="card-title">Casino</h5>
+                <label class="card-text">Earn or lose 20 golds</label>
+                <input type="hidden" name="location" value="casino">
+                <button type="submit" class="btn btn-primary" value="casino">Submit</button>
+            </div>
+        </form><br>
+        <div class="activities">
+            <form class="activity" action="/process_money" method="post">
+                {% csrf_token %}
+                <div class="subact">
+                    <h3>Activities:</h3>
+                    <input type="text" name="" value="">
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+ 
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>   
+</body>
+</html>

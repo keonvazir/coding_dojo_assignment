@@ -1,0 +1,12 @@
+1) Don't rename/change the file names for .py files (especially) after you establish them. Also same goes with folder and SQL database names
+
+2) very important that everything matches in the names and the from ... import section. Otherwise it won't link up
+
+3) keep the server.py and msqlconnection.py in the same folder
+
+4) might want to download instead of copy and pasting the code for formatting issues
+
+5) make sure everything is indented as intended, it really makes a huge difference.
+
+Main thing is to make sure the names you assign variables and tables all match up. And that everything in your Python file are properly indented. 
+

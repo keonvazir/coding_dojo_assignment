@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+            p {
+              color: green;
+              margin: 8px;
+            }
+            b {
+              color: orangered;
+            }
+    </style>
+</head>
+<body>
+        <h3>Alert!</h3>
+        <p><b>Peter Piper</b> picked a peck of pickled peppers.</p>
+        <button class="btn3">Change it!</button>
+       
+        <script>
+            $(document).ready(function(){
+                $(".btn3").click(function(){
+                    $("p").text("Hello World");
+                });
+            });
+        </script> 
+        <script>
+      
+        $( "p" ).text(); 
+        $("h3").click(function() {
+            alert("I've been clicked");
+        });
+        
+        </script>
+        <script>
+            $(document).ready(function(){
+                $(".btn2").click(function(){
+                    $("#p1").css("color", "blue")
+                    .slideUp(2000)
+                    .slideDown(2000);
+                });
+            });
+        </script>
+`       
+        <script>
+            $(document).ready(function(){
+                $(".btn1").click(function(){
+                    $("input:text").val("Karl");
+                });
+            });
+        </script>
+
+
+        <p id="p1">jQuery is the bees knees!</p>
+        <button class="btn2">Click Me</button>
+
+        <label for="site-search">Search the site:</label>
+        <input type="text" name="site-search">
+        
+        <button class="btn1">Search</button>
+       
+        
+</body>
+</html>

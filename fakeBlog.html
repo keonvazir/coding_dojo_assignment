@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Fake Blog</title>
+</head>
+<body>
+    <h1>Kevin Durant</h1>
+    <br></br>
+    <img id="kevindurant" src="/Users/kvazir/Desktop/dojo_assignments/webfun/html/Kevin Durant .jpg" alt="kevin durant">
+        <p>Check out my bio below for more information about me.</p>
+        <a href="https://en.wikipedia.org/wiki/Kevin_Durant">My Bio</a>
+        <br></br>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>PPG</th>
+                <th>Leading Scorer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2008-09</td>
+                <td>25.3</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>2009-10</td>
+                <td>30.1</td>
+                <td>Yes</td>
+            </tr>
+                <td>2010-11</td>
+                <td>27.7</td>
+                <td>Yes</td>
+            <tr>
+                <td>2011-12</td>
+                <td>28</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>2012-13</td>
+                <td>28.1</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>2013-14</td>
+                <td>32</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>2014-15</td>
+                <td>25.4</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>2015-16</td>
+                <td>28.2</td>
+                <td>No</td>
+            </tr>
+        </tbody>
+    </table>
+    <br></br>
+        <p>My Career</p>
+        <ul>
+            <li>2007-2016: Seattle SuperSonics/OKC</li>
+            <li>2016-2019: Golden State Warriors</li>
+            <li>2019-Present: Brooklyn Nets</li>
+        </ul>
+        <br></br>
+    <h2>Please take this quick survey</h2>
+        <form action="process.php" method="post">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <label for="yes">Yes I want to join the email thread.</label>
+            <input type="radio" id="yes" name="email preference" value="Yes I want to join the email thread.">
+            <label for="no">No I don't wish to join.</label>
+            <input type="radio" id="no" name="email preference" value="No I don't wish to join.">
+                <br></br>
+            <p>How did you hear about us?</p>
+            <label for="friends">Friends</label>
+            <input type="checkbox" id="friends" name="category" value="friends">
+            <label for="social media">Social Media</label>
+            <input type="checkbox" id="socialmedia" name="category" value="socialmedia">
+            <label for="randomly">Randomly</label>
+            <input type="checkbox" id="randomly" name="category" value="randomly">
+                <br></br>
+            <p>Overall satifaction of website:</p>
+            <select name="number">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <br></br>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+</html>
