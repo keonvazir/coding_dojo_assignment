@@ -5,5 +5,5 @@ from . import views
                     
 urlpatterns = [
     url(r'^$', views.root),
-    url(r'^$', views.index),
+    url(r'^login$', views.index),
 ]

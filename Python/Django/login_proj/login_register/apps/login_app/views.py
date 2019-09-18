@@ -5,7 +5,7 @@ from django.contrib import messages
 
 
 def root(request):
-    return redirect("/")
+    return redirect("/login")
 
 def index(request):
     return render(request, "login_app/index.html")
