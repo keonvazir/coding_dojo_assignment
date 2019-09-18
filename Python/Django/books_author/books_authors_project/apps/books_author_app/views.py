@@ -19,12 +19,9 @@ from .models import Book, Author
 #     def __repr__(self):
 #         return f"<Author object: {self.first_name} {self.last_name}>"
 
-def add_root(request):
-    return redirect("/")
-
 def index(request):
     context = {
-        "all_the_books": Book.objects.all(),
+        "books": Book.objects.all(),
     }
     return render(request, "books_author_app/index.html", context)
 

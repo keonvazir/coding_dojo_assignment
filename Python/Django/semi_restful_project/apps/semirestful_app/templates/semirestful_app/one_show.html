@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View New Show</title>
+</head>
+<body>
+    <h1>TV Show {{restful.id}}</h1>
+    <a href="/shows">Go Back</a>
+    <p>Title: {{ restful.title}}</p>
+    <p>Network: {{ restful.network}}</p>
+    <p>Release Date: {{ restful.release_date}}</p>
+    <p>Description: {{ restful.description}}</p>
+    <br> <br>  <br>
+    <p>Last Updated: {{ restful.updated_at}}</p>
+    <br>
+    <a href="/shows/{{restful.id}}/edit">Edit</a>| <a href="/shows/{{restful.id}}/destroy">Delete</a>
+</body>
+</html>

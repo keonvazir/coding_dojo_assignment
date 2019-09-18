@@ -1,11 +1,21 @@
 ######### APP LEVEL views.py ###########
 from django.shortcuts import render, redirect
 # from django.contrib import messages
+
 from .models import Restful
 
+# class Restful(models.Model):
+#     title = models.CharField(max_length=45)
+#     network = models.CharField(max_length=45)
+#     release_date = models.DateTimeField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     def __repr__(self):
+#         return f"<Restful object: {self.id} {self.title} {self.network} {self.release_date}>"
 
-def root(reqeust):
-    return redirect("/shows")
+
+# def root(reqeust):
+#     return redirect("/shows")
 
 def index(request):
     context = {
