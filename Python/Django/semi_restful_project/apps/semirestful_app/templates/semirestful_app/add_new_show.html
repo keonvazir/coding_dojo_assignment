@@ -12,26 +12,34 @@
     <a href="/shows">Go Back</a>
     
     <div class="container">
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %} 
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
         <form action="/shows/create" method="POST">
             {% csrf_token %}
            
-            <br>    
-            Title {{ new_title}}
-            <input type="text" name="new_title">
-            <br>
-            Network {{ new_network}}
-            <input type="text" name="new_network">
-            <br>
-            Release Date {{ new_release}}
-            <input type="date" name="new_release">
-            <br>
-            Description {{ description}}
-            <input type="text" name="description">
-            <br>
+            <div class="form-group">
+                    <label for="new_title">Title:</label>
+                    <input type="text" class="form-control" name="new_title" placeholder="My Super Neat tv_show">
+            </div>
+            <div class="form-group">
+                    <label for="new_network">Network:</label>
+                    <input type="text" class="form-control" name="new_network" placeholder="Add network here">
+            </div>
+            <div class="form-group">
+                    <label for="new_release">Release Date:</label>
+                    <input type="date" class="form-control" name="new_release">
+            </div>
+            <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" name="description" placeholder="add description here">
+            </div>
             <input type="submit" value="Create">
-            
-        </form>
-        
+        </form> 
     </div>
 </body>
 </html>

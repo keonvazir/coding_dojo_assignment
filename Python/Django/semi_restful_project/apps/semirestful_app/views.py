@@ -1,8 +1,7 @@
 ######### APP LEVEL views.py ###########
-from django.shortcuts import render, redirect
-# from django.contrib import messages
+from django.shortcuts import render, redirect, HttpResponse
+from django.contrib import messages
 from .models import Restful
-
 
 def root(reqeust):
     return redirect("/shows")
@@ -23,12 +22,21 @@ def create(request):
     if request.method == "GET":
         return redirect("/shows")
     if request.method == "POST":
-        title = request.POST['new_title']
-        network = request.POST['new_network']
-        release = request.POST['new_release']
-        description = request.POST['description']
-        restful = Restful.objects.create(title=title, network=network, release_date = release)
-        print("###################")
+        errors = Restful.objects.basic_validator(request.POST)
+        if len(errors)>0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            # restful = Restful.objects.all()
+            return redirect("/shows/new")
+        else:
+            title = request.POST['new_title']
+            network = request.POST['new_network']
+            release_date = request.POST['new_release']
+            description = request.POST['description']
+            
+            restful = Restful.objects.create(title=title, network=network, release_date = release_date, description=description)
+            
+        print("#"*80)
         return redirect("/shows/"+str(restful.id))
 
 def one_show(request, restful_id):
@@ -53,19 +61,23 @@ def update(request, restful_id):
     if request.method == "GET":
         return redirect("/shows")
     if request.method == "POST":
-        restful = Restful.objects.get(id=restful_id)
-        print("*"*80)
-        restful.title = request.POST['new_title']
-        restful.network = request.POST['new_network']
-        restful.release_date = request.POST['new_release']
-        restful.description = request.POST['description']
-        restful.save()
-        return redirect("/shows/"+str(restful_id))
+        errors = Restful.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+        # restful = Restful.objects.get(id=restful_id)
+            print("*"*80)
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect("/shows"+str(restful_id)+"/edit")
+        else:
+            this_show = Restful.objects.get(id=restful_id)
+            this_show.title = request.POST['new_title']
+            this_show.network = request.POST['new_network']
+            this_show.release_date = request.POST['new_release']
+            this_show.description = request.POST['description']
+            this_show.save()
+            return redirect("/shows/"+str(restful_id)+ "/update")
 
 def delete(request, restful_id):
-    # if request.method == "GET":
-    #     return redirect("/shows")
-    # if request.method == "POST":
     delete_restful = Restful.objects.get(id=restful_id)
     delete_restful.delete()
     return redirect("/shows")
