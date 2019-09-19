@@ -13,7 +13,10 @@ def index(request):
     return render(request, "login_app/index.html")
 
 def success(request):
-    return render(request, "login_app/success.html")
+    if "first_name" in request.session:
+        return render(request, "login_app/success.html")
+    return redirect("/")
+
 
 
 def reg(request):
@@ -32,16 +35,20 @@ def reg(request):
             birthday = request.POST['birthday']
             user = User.objects.create(first_name=first_name, last_name=last_name, email=email, birthday=birthday, password=password)
             messages.success(request, "User successfully registered")
+            request.session['first_name']=user.first_name
         return redirect("/success")
 
 def login(request):
     errors={}
-    print("login user works!"+"*"*80)
+    # print("login user works!"+"*"*80)
     if request.method == "POST":
         other_user = User.objects.filter(email = request.POST['email'])
+        # print(other_user)
+        # print(request.POST)
         try:
             this_user = other_user[0]
             if request.POST['password'] == this_user.password:
+                request.session['first_name'] = this_user.first_name
                 return redirect("/success")
             errors["password_error"] = "You forgot your password"
         except:
@@ -49,6 +56,10 @@ def login(request):
     if len(errors)>0:
         for key, value in errors.items():
             messages.error(request, value)
+    return redirect("/")
+
+def logout(request):
+    request.session.clear()
     return redirect("/")
             
 
