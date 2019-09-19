@@ -10,27 +10,43 @@
 </head>
 <body>
 <div class="container container-fluid">
+        <!-- {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %} -->
     <div class="row align-items-start">
         <!--******************Login***************************-->
         <div class="col">
             <h3>Login</h3>
-            <form action="users/login_user" method="post">
+            
+            <form action="/login" method="post">
             {% csrf_token %}
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <textarea type="password" class="form-control" name="user_description"></textarea>
+                    <input type="password" class="form-control" name="password"></input>
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
             </form>
         </div>
         <!--******************Reg***************************-->
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+            {% endif %}
         <div class="col">
             <h3>Registration</h3>
-            <form action="users/add_user" method="post">
+            
+            <form action="/reg" method="post">
             {% csrf_token %}
                 <div class="form-group">
                     <label for="first_name">First Name</label>
@@ -45,12 +61,16 @@
                         <input type="text" class="form-control" name="email" placeholder="This will be so great!"></input>
                     </div>
                 <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" class="form-control" name="birthday" placeholder="This will be so great!"></input>
+                    </div>
+                <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="This will be so great!"></input>
+                        <input type="password" class="form-control" name="password" placeholder="This will be so great!"></input>
                     </div>
                 <div class="form-group">
                         <label for="confirm_password">Confirm PW</label>
-                        <input type="text" class="form-control" name="confirm_password" placeholder="This will be so great!"></input>
+                        <input type="password" class="form-control" name="confirm_password" placeholder="This will be so great!"></input>
                     </div>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
