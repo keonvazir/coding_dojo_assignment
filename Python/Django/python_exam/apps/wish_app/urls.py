@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^wishes/edit_wish/(?P<wish_id>\d+)$', views.edit_wish),
     url(r'^wishes/(?P<wish_id>\d+)/destroy$', views.remove),
     url(r'^wishes/(?P<wish_id>\d+)/granted$', views.granted),
+    url(r'^wishes/(?P<wish_id>\d+)/like$', views.like)
 ]

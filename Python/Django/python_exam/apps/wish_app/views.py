@@ -48,8 +48,8 @@ def reg(request):
 def dashboard(request):
     if "first_name" in request.session:
         context = {
-            "all": Wish.objects.all(),
-            "users": User.objects.all(),
+            "all": [wish for wish in Wish.objects.filter(wished_for_by=request.session['id']) if wish.granted==False],
+            "granted_wishes": Wish.objects.filter(granted=True),
         }
         return render(request, "wish_app/dashboard.html", context)
     return redirect("/")
@@ -116,10 +116,18 @@ def remove(request, wish_id):
     return redirect("/wishes")
 
 
-def granted(request, user_id):
-        wish_id = request.POST['wish_id']
-        this_user = User.objects.get(id=user_id)
+def granted(request, wish_id):
         this_wish = Wish.objects.get(id=wish_id)
-        this_user.wishes.add(this_wish)
-        
+        this_wish.granted = True
+        this_wish.save()
         return redirect("/wishes")
+
+def like(request, wish_id):
+    wish = Wish.objects.get(id=wish_id)
+    #wish_user = wish.user.all()
+    session_user = User.objects.get(id=request.session['id'])
+    if session_user not in wish.user.all():
+        wish.user.add(session_user)
+        return redirect("/wishes")
+    wish.user.remove(session_user)
+    return redirect("/wishes")

@@ -45,6 +45,8 @@ class Wish(models.Model):
     objects = WishManager()
     user = models.ManyToManyField(User, related_name="wishes")
     item = models.CharField(max_length=255)
+    granted = models.BooleanField(default=False)
+    wished_for_by = models.ForeignKey(User, related_name="liked_wishes")
     description = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

@@ -50,12 +50,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                {% for user in users%}
+                {% for wish in granted_wishes%}
                   <tr>
-                    <td>{{user.wishes.item.get.wish.id}}</td>
-                    <td>{{user.first_name}}</td>
-                    <td>{{user.Wish.filter.created_at}}</td>
-                    <td>{{user.Wish.filter.updated_at}}</td>
+                    <td>{{wish.item}}</td>
+                    <td>{{wish.wished_for_by.first_name}} {{ wish.wished_for_by.last_name}}</td>
+                    <td>{{wish.created_at}}</td>
+                    <td>{{wish.user.count}}</td>
+                    <td>
+                        {% if request.session.id != wish.wished_for_by.id %}
+                        <a href="wishes/{{wish.id}}/like">Like</a>
+                        {% endif %}
+                    </td>
                   </tr>
                   {% endfor %}
                 </tbody>
