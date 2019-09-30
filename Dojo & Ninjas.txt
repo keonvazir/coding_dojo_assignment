@@ -1,0 +1,51 @@
+In [5]: new_dojo = Dojo.objects.create(name="Theo", city="New York City", state="NY")                                                                                                                                                         
+
+In [6]: new_dojo_1 = Dojo.objects.create(name="Drop Down and Give me Twentyk", city="San Francisco", state="CA")                                                                                                                              
+
+In [7]: new_dojo_2 = Dojo.objects.create(name="Stacks on Stacks on Racks", city="Portland", state="OR")                                                                                                                                       
+
+In [8]: delete_new_dojo = Dojo.objects.get(name="Theo")                                                                                                                                                                                       
+
+In [9]: delete_new_dojo.delete()                                                                                                                                                                                                              
+Out[9]: (1, {'dojo_ninja_app.Ninja': 0, 'dojo_ninja_app.Dojo': 1})
+
+In [10]: delete_new_dojo_1 = Dojo.objects.get(name="Drop Down and Give me Twentyk")                                                                                                                                                           
+
+In [11]: delete_new_dojo_1.delete()                                                                                                                                                                                                           
+Out[11]: (1, {'dojo_ninja_app.Ninja': 0, 'dojo_ninja_app.Dojo': 1})
+
+In [12]: delete_new_dojo_2 = Dojo.objects.get(name = "Stacks on Stacks on Racks")                                                                                                                                                             
+
+In [13]: delete_new_dojo_2.delete()                                                                                                                                                                                                           
+Out[13]: (1, {'dojo_ninja_app.Ninja': 0, 'dojo_ninja_app.Dojo': 1})
+
+In [19]: newbie_ninja = Ninja.objects.create(first_name="f", last_name="f", dojo = Dojo.objects.get(name="morning java"))  
+
+new_ninja1 = Ninja.objects.create(first_name="Tom", last_name="Betty", dojo = Dojo.objects.get(name="morning java"))
+
+
+new_ninja2 = Ninja.objects.create(first_name="Herald", last_name="Lore", dojo = Dojo.objects.get(name="morning java")) 
+
+In [29]: new_ninja3 = Ninja.objects.create(first_name="Ishmail", last_name="Eiore", dojo = Dojo.objects.get(name="go home daddy"))                                                                                                            
+
+ new_ninja4 = Ninja.objects.create(first_name="Danny", last_name="Rouyer", dojo = Dojo.objects.get(name="go home daddy"))  
+
+ new_ninja5 = Ninja.objects.create(first_name="Harry", last_name="Dingleberry", dojo = Dojo.objects.get(name="go home daddy")) 
+
+In [33]: new_ninja6 = Ninja.objects.create(first_name="Larry", last_name="Dynopnuer", dojo = Dojo.object.get(name = "all we do is code")) 
+
+new_ninja6 = Ninja.objects.create(first_name="Larry", last_name="Dynopnuer", dojo = Dojo.objects.get(name = "all we do is code")) 
+
+new_ninja7 = Ninja.objects.create(first_name="Perry", last_name="Walker", dojo = Dojo.objects.get(name = "all we do is code"))
+
+
+In [40]: all_ninjas = Ninja.objects.filter(dojo = Dojo.objects.get(name="morning java"))  
+
+all_ninjas2 = Ninja.objects.filter(dojo = Dojo.objects.last()) 
+
+In [43]: new_last_dojo = Ninja.objects.last().dojo   
+new_last_dojo
+
+In [48]: new_dojo1 = Dojo.objects.create(name="MY DOJO!!", city="udonit", state="df")  
+
+In [49]: desc = models.TextField(default="jibberish") 

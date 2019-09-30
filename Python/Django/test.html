@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+    var slid = false
+    $("#flip").click(function(){
+    console.log(slid)
+    if (slid == false){
+    $("#panel").slideDown("slow");
+    slid = true
+    } else {
+    $("#panel").slideUp("slow");
+    slid = false
+    }
+    });
+    });
+    </script>
+</head>
+<body>
+    <button id="flip">Click to slide the panel</button>
+    <h1 id="panel">This is what should be flipped</h1>
+    
+</body>
+</html>
