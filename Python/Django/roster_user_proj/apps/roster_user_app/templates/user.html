@@ -4,45 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rosters</title>
-    {% load static %}
+    <title>User</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <table class="table" style="display: inline-block; vertical-align: top; margin-left: 800px; margin-top: 100px">
+    <table class="table" style="display: inline-block; margin: 50px; margin-left:600px">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Title</th>
+            <th scope="col">Name</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-    {% for roster in rosters %}
+         {% for user in users %}
           <tr>
-            <th scope="row">{{ roster.id}}</th>
-            <td>{{ roster.title}}</td>
-            <td><a href="rosters/{{ roster.id}}">View</a></td>
+            <th scope="row">{{ user.id}}</th>
+            <td>{{ user.first_name}} {{ user.last_name}}</td>
+            <td><a href="users/{{ user.id}}">View</a></td>
+        {% endfor %}
           </tr>
-    {% endfor %}
         </tbody>
       </table>
-<div class="container">
-<h1>Add a Roster</h1>
-<form action="/rosters/add_roster" method="POST">
-{% csrf_token %}
-<div class="form">
-<label for="roster_title">Title: </label>
-<input type="text" name="book_title" placeholder="I read books!">
-</div>
-<br>
-<div class="form">
-<label for="roster_description" method="POST">Description: </label>
-<textarea type="text" class="form-control" name="roster_description" placeholder="neat roster"></textarea>
-</div>
-<button type="submit" class="btn btn-primary">Add</button>
-</form>
-</div>
+      <h1>Add an Player</h1>
+      <form action="users/add_user" method="POST">
+            {% csrf_token %}
+          First Name <input type="text" name="author_first_name" value="">
+          <br>
+          Last Name <input type="text" name="author_last_name" value="">
+          <br>
+          Notes <input type="text" name="author_notes" placeholder="Add notes here..." value="">
+          <input type="submit" value="Add">
+      </form>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
