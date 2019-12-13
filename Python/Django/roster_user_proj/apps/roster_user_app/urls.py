@@ -8,5 +8,7 @@ urlpattenrs = [
     url(r'^rosters/add_roster', views.add_roster),
     url(r'^rosters/(?P<roster_id>\d+)$', views.one_roster),
     url(r'^users/(?P<user_id>\d+)$', views.one_user),
+    url(r'^users/(?P<user_id>\d+)/add_roster$', views.add_roster_to_user),
+    url(r'^rosters/(?P<roster_id>\d+)/add_user$', views.add_user_to_roster),
 
 ]
