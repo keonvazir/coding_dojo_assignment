@@ -29,11 +29,11 @@
       <h1>Add an Player</h1>
       <form action="users/add_user" method="POST">
             {% csrf_token %}
-          First Name <input type="text" name="author_first_name" value="">
+          First Name <input type="text" name="user_first_name" value="">
           <br>
-          Last Name <input type="text" name="author_last_name" value="">
+          Last Name <input type="text" name="user_last_name" value="">
           <br>
-          Notes <input type="text" name="author_notes" placeholder="Add notes here..." value="">
+          Notes <input type="text" name="user_notes" placeholder="Add notes here..." value="">
           <input type="submit" value="Add">
       </form>
 
