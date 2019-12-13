@@ -55,3 +55,19 @@ def one_roster(request, roster_id):
         "other_users": other_users,
     }
     return render(request, "roster_user_app/view_roster.html", context)
+
+def add_user_to_roster(request, roster_id):
+    if request.method == "GET":
+        return redirect("/")
+    if request.method == "POST": 
+        user_id = request.POST['user_id']
+        Roster.objects.get(id=roster_id).users.add(User.objects.get(id=user_id))
+        return redirect(f"/rosters/{roster_id}")
+
+def add_roster_to_user(request, user_id):
+    if request.method == "GET":
+        return redirect("/")
+    if request.method == "POST":
+        roster_id = request.POST['roster_id']
+        User.objects.get(id=user_id).rosters.add(Roster.objects.get(id=roster_id))
+        return redirect(f"/users/{user_id}")
