@@ -1,3 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
 
-# Create your views here.
+from .models import *
+
+def index(request):
+    context = {
+        "rosters": Roster.objects.all(),
+    }
+    return render(request, "roster_app/index.html", context)
+
+
+
+
+
+
