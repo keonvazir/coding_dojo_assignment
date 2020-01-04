@@ -56,6 +56,25 @@ def add_roster(request):
             Player.objects.create(first_name=first_name, last_name=last_name, notes=notes)
             return redirect("/players")
 
+    def add_player_to_roster(request, roster_id):
+        if request.method == "GET":
+            return redirect("/")
+        if request.method == "POST":
+            player_id = request.POST['player_id']
+            Roster.objects.get(id=roster_id).players.add(Player.objects.get(id=player_id))
+            return redirect(f"/rosters/{roster_id}")
+    
+    def add_roster_to_player(request, player_id):
+        if request.method == "GET":
+            return redirect("/")
+        if request.method == "POST":
+            roster_id = request.POST['roster_id']
+            Player.objects.get(id=player_id).rosters.add(Roster.objects.get(id=roster_id))
+            return redirect(f"/players/{player_id}")
+
+    
+
+
 
 
 
