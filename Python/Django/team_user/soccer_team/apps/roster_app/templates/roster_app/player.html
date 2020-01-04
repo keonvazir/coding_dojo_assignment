@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+            <table class="table" style="display: inline-block; margin: 50px; margin-left:600px">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for player in players %}
+                      <tr>
+                        <th scope="row">{{ player.id}}</th>
+                        <td>{{ player.first_name}} {{ player.last_name}}</td>
+                        <td><a href="players/{{ player.id}}">View</a></td>
+                    {% endfor %}
+                      </tr>
+                    </tbody>
+                  </table>
+    </div>
+    <div class="wrapper">
+            <h1>Add an Player</h1>
+            <form action="players/add_player" method="POST">
+                {% csrf_token %}
+                First Name<input type="text" name="player_first_name" placeholder="lionel...">
+                Last Name<input type="text" name="player_last_name" placeholder="messi">
+                Notes: <textarea type="text" name="player_notes" placeholder="Position: Striker, number: 10"></textarea>
+                <input type="submit" value="Add">
+            </form>
+    </div>
+</body>
+</html>
