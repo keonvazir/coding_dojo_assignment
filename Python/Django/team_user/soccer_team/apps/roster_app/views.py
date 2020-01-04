@@ -17,14 +17,14 @@ def add_roster(request):
         Roster.objects.create(title=title, description=description)
         return redirect("/")
 
-    def players_page(request):
+def players_page(request):
         context = {
             "players": Player.objects.all(),
 
         }
         return render(request, "roster_app/player.html", context)
 
-    def one_player(request, player_id):
+def one_player(request, player_id):
        player = Player.objects.get(id=player_id)
        this_player_rosters = player.rosters.all()
        all_rosters = Roster.objects.all()
@@ -35,7 +35,7 @@ def add_roster(request):
        }
        return render(request, "roster_app/view_player.html", context)
 
-    def one_roster(request, roster_id):
+def one_roster(request, roster_id):
         roster = Roster.objects.get(id=roster_id)
         this_roster_players = roster.players.all()
         all_players = Player.objects.all()
@@ -46,7 +46,7 @@ def add_roster(request):
         }
         return render(request, "roster_app/roster.html", context)
 
-    def add_player(request):
+def add_player(request):
         if request.method == "GET":
             return redirect("/")
         if request.method == "POST":
@@ -56,7 +56,7 @@ def add_roster(request):
             Player.objects.create(first_name=first_name, last_name=last_name, notes=notes)
             return redirect("/players")
 
-    def add_player_to_roster(request, roster_id):
+def add_player_to_roster(request, roster_id):
         if request.method == "GET":
             return redirect("/")
         if request.method == "POST":
@@ -64,7 +64,7 @@ def add_roster(request):
             Roster.objects.get(id=roster_id).players.add(Player.objects.get(id=player_id))
             return redirect(f"/rosters/{roster_id}")
     
-    def add_roster_to_player(request, player_id):
+def add_roster_to_player(request, player_id):
         if request.method == "GET":
             return redirect("/")
         if request.method == "POST":
