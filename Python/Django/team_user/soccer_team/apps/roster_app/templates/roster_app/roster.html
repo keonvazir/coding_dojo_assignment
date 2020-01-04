@@ -17,8 +17,20 @@
     <h2>Players: </h2>
     <ol>
         {% for player in roster.players.all %}
-        <li>{{player.first_name}} {{player.last_name}}<a href="/players/{{player_id}}"></a></li>
+        <li>{{player.first_name}} {{player.last_name}}<a href="/players/{{player.id}}"></a></li>
         {% endfor %}
     </ol>
+    <div class="col">
+        <form action="/rosters/{{roster.id}}/add_player" method="POST">
+            {% csrf_token %}
+            <label for="player_id">Add Player to Team</label>
+            <select class="form-control" name="player_id">
+                {% for player in other_players %}
+                <option value="{{player.id}}">{{player.first_name}} {{player.last_name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add">
+        </form>
+    </div>
 </body>
 </html>
